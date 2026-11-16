@@ -1,5 +1,5 @@
 
-function textforemial(otp, type) {
+function textforemial(otp) {
     return `
 <!DOCTYPE html>
 <html>
@@ -41,7 +41,7 @@ function textforemial(otp, type) {
                                 Hello,
                                 <br><br>
                                 Thank you for choosing TXO. To complete your
-                                ${type} verification, please use the secure
+                                 verification, please use the secure
                                 one-time password provided below.
                             </p>
 

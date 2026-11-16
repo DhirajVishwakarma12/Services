@@ -21,7 +21,7 @@ const sendEmail = async function ({ email, otp}) {
       },
       to: email,
       subject: `TXO | Your OTP Code for verification`,
-      html: textforemial(otp, type),
+      html: textforemial(otp),
     };
 
     const info = await transporter.sendMail(mailoptions);

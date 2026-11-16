@@ -84,10 +84,6 @@ module.exports.login = async function (req, res) {
     }
 
     if (!user.isverified) {
-      res.status(403).json({
-        errors: "Please verify your email before logging in",
-      });
-
       // Remove any previous verification codes for this email address.
       await otpModel.deleteMany({ email });
       const otp = Math.floor(100000 + Math.random() * 900000).toString();
@@ -95,6 +91,10 @@ module.exports.login = async function (req, res) {
       // Send a one-time verification code and save the returned code.
       await sendEmail({ email, otp });
       await otpModel.create({ email, otp });
+
+      return res.status(403).json({
+        errors: "Please verify your email before logging in",
+      });
     }
 
     const token = jwt.sign(
